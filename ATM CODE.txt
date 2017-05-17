@@ -1,0 +1,306 @@
+// ATM Code.cpp : Defines the entry point for the console application.
+//
+
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+class Bank
+{
+
+	string name;
+	float accnumber;
+	float balance;
+	int pin;
+
+public:
+
+
+	void deposit()
+	{
+		int a;
+		cout << "Please enter the amount you want to deposit :" << endl;
+		cin >> a;
+		balance = balance + a;
+		cout << "Your transaction has been successful" << endl;
+		cout << "Your new balance is: ";
+		display();
+	}
+	void withdraw()
+
+	{
+		int a, b;
+		int temp;
+		cout << " Please choose an amount to withdraw : " << endl;
+		cout << " 1. 1000 \t\t 4. 10000\n 2. 2000 \t\t 5. 20000\n 3. 5000 \t\t 6. Other amount\n";
+		cin >> a;
+		switch (a)
+		{
+		case 1:temp = balanceCheck(1000);
+			if (temp == 1)
+			{
+				balance = balance - 1000;
+				cout << "Your transaction has been completed" << endl;
+				cout << "Your new balance is: ";
+				display();
+			}
+			else
+			{
+				cout << "Your balance is insufficient" << endl;
+			}
+			break;
+
+		case 2:temp = balanceCheck(2000);
+			if (temp == 1)
+			{
+				balance = balance - 2000;
+				cout << "Your transaction has been completed" << endl;
+				cout << "Your new balance is: ";
+				display();
+			}
+			else
+			{
+				cout << "Your balance is insufficient" << endl;
+			}
+			break;
+
+		case 3:temp = balanceCheck(5000);
+			if (temp == 1)
+			{
+				balance = balance - 5000;
+				cout << "Your transaction has been completed" << endl;
+				cout << "Your new balance is: ";
+				display();
+			}
+			else
+			{
+				cout << "Your balance is insufficient" << endl;
+			}
+			break;
+
+		case 4:temp = balanceCheck(10000);
+			if (temp == 1)
+			{
+				balance = balance - 10000;
+				cout << "Your transaction has been completed" << endl;
+				cout << "Your new balance is: ";
+				display();
+			}
+			else
+			{
+				cout << "Your balance is insufficient" << endl;
+			}
+			break;
+
+		case 5:temp = balanceCheck(20000);
+			if (temp == 1)
+			{
+				balance = balance - 20000;
+				cout << "Your transaction has been completed" << endl;
+				cout << "Your new balance is: ";
+				display();
+			}
+			else
+			{
+				cout << "Your balance is insufficient" << endl;
+			}
+			break;
+
+		case 6:cout << "Please enter the amount you want to withdraw" << endl;
+			cin >> b;
+			temp = balanceCheck(b);
+				if (temp == 1)
+				{
+					balance = balance - b;
+					cout << "Your transaction has been completed" << endl;
+					cout << "Your new balance is: ";
+					display();
+				}
+				else
+				{
+					cout << "Your balance is insufficient" << endl;
+				}
+			break;
+
+		default:cout << "Invalid Input" << endl;
+			break;
+		}
+	}
+
+	int balanceCheck(float x)
+	{
+		if (x <= balance)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+	void display()
+	{
+		cout << balance << endl;
+	}
+
+	void changepin()
+	{
+		int a, b, c, temp;
+		temp = 1;
+		while (temp == 1)
+		{
+			temp = 0;
+			cout << "Please enter your current pin number" << endl;
+			cin >> a;
+			if (a == pin)
+			{
+				cout << "Please enter your new pin number" << endl;
+				cin >> b;
+				cout << "Please re-enter your new pin number" << endl;
+				cin >> c;
+				if (b == c)
+				{
+					pin = b;
+					cout << "Your pin number has been changed successfully!" << endl;
+
+				}
+				else
+				{
+					cout << "Your entered and re-entered values do not match" << endl;
+					cout << "Please press 1 to try again or 0 to quit" << endl;
+					cin >> temp;
+
+				}
+			}
+			else
+			{
+				cout << "You have entered the wrong pin number" << endl;
+			}
+		}
+	}
+
+
+	void transfer()
+	{
+		int32_t tacc;
+		int tacc1;
+		int tam=0;
+		cout << "**************************TRANSFER MENU*****************************\n";
+		cout << "Please Enter the Bank Account Number : ";
+		cin >> tacc;
+		if (tacc == 123456789)
+		{
+			tacc1 = 1;
+		}
+		else if (tacc == 123456987)
+		{
+			tacc1 = 2;
+		}
+		else if (tacc > 0)
+		{
+			tacc1 = 3;
+		}
+		switch (tacc1)
+		{
+		case 1: cout << "Name : Jhon Wayne \n";
+			cout << "Account Number :" << tacc << endl;
+			break;
+		case 2:cout << "Name : Tevor Phillps \n ";
+			cout << "Account Number :" << tacc << endl;
+			break;
+		case 3: cout << "Name : Franklin Collins \n ";
+			cout << "Account Number :" << tacc << endl;
+			break;
+		}
+		cout << "Please enter the ammount you want to transfer : ";
+		cin >> tam;
+		if (tam > balance || tam == balance)
+		{
+			cout << " ***You have insufficent balance*** " << endl;
+		}
+		else
+		{
+			cout << "***Your tansction is completed*** \n " << endl;
+			balance = balance - tam;
+			cout << "Your remaining balance is : ";
+			cout << balance << endl;
+
+		}
+	}
+	int set()
+	{   int p;
+        cout<< "CREATE NEW YOUT NEW ACCOUNT >> \n" ;
+		cout << "Please enter your name : "<<endl;
+		cin >> name ;
+		cout << "Please enter the account number: ";
+		cin >> accnumber ;
+		cout << "Please deposit your Balance : ";
+		cin >> balance ;
+		cout << " Please enter your pin number : ";
+		cin >> pin;
+        cout << "\n \n \n \n ";
+        p=pin;
+       
+        return p;
+    
+        
+	}
+	
+	 
+	};
+
+	int main()
+	{   int pchk;
+    int pchk1;
+		char a= 'Y';
+		Bank c1;
+		pchk=c1.set();
+		cout << "***********WELCOME TO ASH BANKING SERVICES*********" << endl;
+		int menu;
+        cout<<"Please Enter you Pin Code : ";
+        cin>>pchk1 ;
+        if (pchk1 != pchk )
+        {
+        cout << "********************INVALID PIN CODE ********************** \n";
+        }
+        else { cout << "\n \n \n \n" ;
+		while(a== 'Y')
+        {
+        cout << "*************USER MENU*********** \n" << endl;
+		cout << " 1) Cash Deposite \n " << "2) Balance Inquiry \n " << "3) Cash Withdraw \n " << "4) Change PIN \n " << "5) Cash Tranfer \n " << endl;
+		cin >> menu;
+        
+		switch (menu)
+		{
+		case 1: c1.deposit();
+		
+			break;
+		case 2: cout<< "Your Balance is :";
+                c1.display();
+			break;
+		case 3: c1.withdraw();
+			break;
+		case 4:  c1.changepin();
+			break;
+		case 5: c1.transfer();
+			break;
+		default: cout << "*************Invaid Input**************" << endl;
+			break;
+		}
+        
+      cout << "Do you want to make another transaction ?  " << endl;
+      cout << "Press Y to Continue or Press N to Exit " ;
+      cin >> a ;
+      cout << " \n \n \n \n "; 
+      
+      
+        }
+
+        }
+		return 0;
+	}
+
+
+
+
